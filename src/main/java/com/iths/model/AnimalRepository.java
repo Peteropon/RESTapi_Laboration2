@@ -11,9 +11,11 @@ import java.util.List;
 @RepositoryRestResource
 public interface AnimalRepository extends MongoRepository<Animal, String> {
 
-    List<Animal> findAnimalByName(@Param("name") String name);
+    //List<Animal> findAnimalByName(@Param("name") String name);
 
-    Animal findByName(@Param("name") String name);
+   // List<Animal> findAnimalByColor(@Param("color") String color);
+
+   // Animal findByName(@Param("name") String name);
 
     Animal findBy_id(ObjectId id);
 

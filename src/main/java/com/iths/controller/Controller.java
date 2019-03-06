@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import com.iths.app.AnimalNotFoundException;
 import com.iths.model.Animal;
 import com.iths.model.AnimalRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +27,15 @@ public class Controller {
 
     @RequestMapping(method = RequestMethod.GET)
     List<Animal> getAll(){
+        log.info("Request for all available animals.");
         return animalRepository.findAll();
     }
+
+//    @GetMapping("/{color}")
+//    public List<Animal> getAnimalByColor(@PathVariable String color) {
+//        log.info("Request for color" + color);
+//        return animalRepository.findB;
+//    }
 
     @RequestMapping(method = RequestMethod.POST)
     Animal createAnimal(@RequestBody Animal animal){
@@ -35,7 +43,7 @@ public class Controller {
         return animal;
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.DELETE)
+    @RequestMapping(method = RequestMethod.DELETE)
     void deleteAll(){
         animalRepository.deleteAll();
     }
@@ -43,13 +51,13 @@ public class Controller {
 
     //Single-item methods
 
-    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    Animal getOne(@PathVariable String name){
-        return animalRepository.findByName(name);
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    Animal getOne(@PathVariable ObjectId id){
+        return animalRepository.findBy_id(id);
     }
 
     @PutMapping("/{id}")
-    Animal changeOne(@RequestBody Animal newAnimal, @PathVariable String id){
+    Animal changeOne(@RequestBody Animal newAnimal, @PathVariable ObjectId id){
         return animalRepository.findById(String.valueOf(id)).map(animal -> {
             animal.setName(newAnimal.getName());
             animal.setColor(newAnimal.getColor());

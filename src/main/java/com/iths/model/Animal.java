@@ -27,28 +27,5 @@ public class Animal {
         this.name = name;
         this.color = color;
     }
-//
-//    public String get_id() {
-//        return _id.toHexString();
-//    }
-//
-//    public void set_id(ObjectId _id) {
-//        this._id = _id;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getColor() {
-//        return color;
-//    }
-//
-//    public void setColor(String color) {
-//        this.color = color;
-//    }
+
 }
